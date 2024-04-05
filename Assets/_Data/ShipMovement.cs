@@ -9,9 +9,9 @@ public class ShipMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        this.worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        this.worldPosition = InputManager.instance.mouseWorldPos;
         this.worldPosition.z = 0;
-        Vector3 newPos = Vector3.Lerp(transform.position, worldPosition, this.speed);
-        transform.position = newPos;
+        Vector3 newPos = Vector3.Lerp(transform.parent.position, worldPosition, this.speed);
+        transform.parent.position = newPos;
     }
 }
