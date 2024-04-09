@@ -2,26 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Spawner : MyMonoBehaviour
 {
+    public static Spawner instance;
     [SerializeField] protected List<Transform> prefabs;
-    private void Reset()
+
+    protected override void Awake()
     {
-        this.LoadComponents();
+        base.Awake();
+        Spawner.instance = this;
     }
 
-    protected virtual void LoadComponents()
+    protected override void LoadComponents()
     {
+        base.LoadComponents();
         this.LoadPrefabs();
     }
 
     protected virtual void LoadPrefabs()
     {
+        if (this.prefabs.Count > 0) { return; }
+
         Transform prefabsObj = transform.Find("Prefabs");
         foreach (Transform prefab in prefabsObj) { 
             this.prefabs.Add(prefab);
         }
         this.HidePrefabs();
+
+        Debug.Log(transform.name + ": LoadPrefabs " + gameObject);
     }
 
     protected virtual void HidePrefabs()
@@ -30,5 +38,12 @@ public class Spawner : MonoBehaviour
         {
             prefab.gameObject.SetActive(false);
         }
+    }
+
+    public virtual Transform Spawn(Vector3 spawnPos, Quaternion rotation)
+    {
+        Transform prefab = this.prefabs[0];
+        Transform newPrefab = Instantiate(prefab, spawnPos, rotation);
+        return newPrefab;
     }
 }
