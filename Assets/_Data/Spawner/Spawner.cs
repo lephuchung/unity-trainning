@@ -2,16 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MyMonoBehaviour
+public abstract class Spawner : MyMonoBehaviour
 {
-    public static Spawner instance;
     [SerializeField] protected List<Transform> prefabs;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        Spawner.instance = this;
-    }
 
     protected override void LoadComponents()
     {
@@ -40,10 +33,26 @@ public class Spawner : MyMonoBehaviour
         }
     }
 
-    public virtual Transform Spawn(Vector3 spawnPos, Quaternion rotation)
+    public virtual Transform Spawn(string prefabName, Vector3 spawnPos, Quaternion rotation)
     {
-        Transform prefab = this.prefabs[0];
+        Transform prefab = this.GetPrefabByName(prefabName);
+        if (prefab == null)
+        {
+            Debug.LogWarning("Prefab not found: " + prefabName);
+            return null;    
+        }
         Transform newPrefab = Instantiate(prefab, spawnPos, rotation);
         return newPrefab;
     }
+
+    public virtual Transform GetPrefabByName(string prefabName)
+    {
+        foreach(Transform prefab in this.prefabs)
+        {
+            if(prefab.name == prefabName) return prefab;
+        }
+
+        return null;
+    }
+
 }
