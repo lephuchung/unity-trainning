@@ -8,10 +8,12 @@ public class MyMonoBehaviour : MonoBehaviour
     {
         this.LoadComponents();
     }
+
     protected virtual void Start()
     {
         // override
     }
+
     protected virtual void Reset()
     {
         this.LoadComponents();
@@ -22,7 +24,13 @@ public class MyMonoBehaviour : MonoBehaviour
     {
         // override
     }
+
     protected virtual void ResetValue()
+    {
+        // override
+    }
+
+    protected virtual void OnEnable()
     {
         // override
     }
