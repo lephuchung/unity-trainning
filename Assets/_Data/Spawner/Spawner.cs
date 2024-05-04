@@ -63,6 +63,8 @@ public abstract class Spawner : MyMonoBehaviour
     {
         foreach(Transform poolObj in this.poolObjs)
         {
+            if (poolObj == null) continue;
+
             if(poolObj.name == prefab.name)
             {
                 this.poolObjs.Remove(poolObj);
