@@ -10,10 +10,10 @@ public class JunkRandom : MyMonoBehaviour
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadJunkCtrl();
+        this.LoadJunkSpawnCtrl();
     }
 
-    protected virtual void LoadJunkCtrl()
+    protected virtual void LoadJunkSpawnCtrl()
     {
         if (this.JunkSpawnCtrl != null) return;
         this.JunkSpawnCtrl = GetComponent<JunkSpawnCtrl>();
