@@ -164,10 +164,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 56170758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b409ec04c3c964fa07140e6907d5e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 63b0b6b59566bae46b939e6f5c47ddf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  bulletCtrl: {fileID: 496676993}
 --- !u!1 &174805571
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageSender: {fileID: 56170760}
+  bulletDespawn: {fileID: 1711344191}
 --- !u!1 &514434258
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageSender: {fileID: 1548599669}
+  bulletDespawn: {fileID: 685231114}
 --- !u!1 &671917674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1323049660}
   - component: {fileID: 1323049662}
-  - component: {fileID: 1323049663}
+  - component: {fileID: 1323049661}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -1217,7 +1220,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1937931875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1323049662
+--- !u!114 &1323049661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1226,12 +1229,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1323049659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee723583feff471418afa0c3cb143eed, type: 3}
+  m_Script: {fileID: 11500000, guid: 732d46124b5eca74eb88073cdea1ed1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sphereCollider: {fileID: 1323049662}
   hp: 1
-  hpMax: 10
---- !u!135 &1323049663
+  hpMax: 2
+  isDead: 0
+  junkCtrl: {fileID: 1937931876}
+--- !u!135 &1323049662
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1895,7 +1901,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1711344189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c973b1e9147124c49883ddd3b35903cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 55d48fb8e686d3f4785fcd0714107428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   disLimit: 70
@@ -2076,6 +2082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 1158678975}
+  junkDespawn: {fileID: 407431803}
 --- !u!1 &1970344701
 GameObject:
   m_ObjectHideFlags: 0
