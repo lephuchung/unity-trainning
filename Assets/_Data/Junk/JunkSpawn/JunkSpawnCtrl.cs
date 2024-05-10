@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class JunkSpawnCtrl : MyMonoBehaviour
 {
+    [Header("Junk Spawn Ctrl")]
     [SerializeField] protected JunkSpawner junkSpawner;
-
     public JunkSpawner JunkSpawner { get => junkSpawner; }
 
     [SerializeField] protected JunkSpawnPoint junkSpawnPoint;
-
     public JunkSpawnPoint JunkSpawnPoint { get => junkSpawnPoint; }
 
     protected override void LoadComponents()

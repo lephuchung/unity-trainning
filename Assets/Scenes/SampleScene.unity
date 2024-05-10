@@ -240,9 +240,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 234697818}
+  - component: {fileID: 234697821}
   - component: {fileID: 234697819}
   - component: {fileID: 234697820}
-  - component: {fileID: 234697821}
   m_Layer: 0
   m_Name: JunkSpawner
   m_TagString: Untagged
@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 211169315}
+  spawnedCount: 0
   prefabs:
   - {fileID: 1937931875}
   poolObjs: []
@@ -295,7 +296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a1124e8a1904c4a8db77e9c928814c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JunkSpawnCtrl: {fileID: 234697821}
+  junkSpawnCtrl: {fileID: 0}
+  randomDelay: 1
+  randomTimer: 0
+  randomLimit: 9
 --- !u!114 &234697821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1667,6 +1671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 1445512058}
+  spawnedCount: 0
   prefabs:
   - {fileID: 606321873}
   - {fileID: 496676992}
