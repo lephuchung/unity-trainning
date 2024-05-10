@@ -4,7 +4,12 @@ using UnityEngine;
 
 public abstract class Spawner : MyMonoBehaviour
 {
+    [Header("Spawner")]
     [SerializeField] protected Transform holder;
+
+    [SerializeField] protected int spawnedCount = 0;
+    public int SpawnedCount { get => spawnedCount; }
+
     [SerializeField] protected List<Transform> prefabs;
     [SerializeField] protected List<Transform> poolObjs;
 
@@ -56,6 +61,7 @@ public abstract class Spawner : MyMonoBehaviour
         newPrefab.SetPositionAndRotation(spawnPos,rotation);
 
         newPrefab.parent = this.holder;
+        this.spawnedCount++;
         return newPrefab;
     }
 
@@ -81,6 +87,7 @@ public abstract class Spawner : MyMonoBehaviour
     {
         this.poolObjs.Add(obj);
         obj.gameObject.SetActive(false);
+        this.spawnedCount--;
     }
 
     public virtual Transform GetPrefabByName(string prefabName)

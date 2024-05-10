@@ -5,6 +5,7 @@ using UnityEngine.Video;
 
 public abstract class JunkAbstract : MyMonoBehaviour
 {
+    [Header("Junk Abstract")]
     [SerializeField] protected JunkCtrl junkCtrl;
 
     public JunkCtrl JunkCtrl { get => junkCtrl; }
