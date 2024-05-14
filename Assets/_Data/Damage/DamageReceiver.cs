@@ -16,6 +16,12 @@ public class DamageReceiver : MyMonoBehaviour
         this.Reborn();
     }
 
+    protected override void ResetValue()
+    {
+        base.ResetValue();
+        this.Reborn();
+    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -28,7 +34,7 @@ public class DamageReceiver : MyMonoBehaviour
         this.sphereCollider = GetComponent<SphereCollider>();
         this.sphereCollider.isTrigger = true;
         this.sphereCollider.radius = 0.2f;
-        Debug.Log(transform.name + ": LoadCollider", gameObject);
+        Debug.LogWarning(transform.name + ": LoadCollider", gameObject);
     }
 
     public virtual void Reborn()
