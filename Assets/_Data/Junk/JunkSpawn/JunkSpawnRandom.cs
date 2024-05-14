@@ -23,11 +23,6 @@ public class JunkSpawnRandom : MyMonoBehaviour
         Debug.Log(transform.name + ": LoadJunkSpawnCtrl", gameObject);
     }
 
-    protected override void Start()
-    {
-        // this.JunkSpawning();
-    }
-
     protected virtual void FixedUpdate()
     {
         this.JunkSpawning();
@@ -44,9 +39,10 @@ public class JunkSpawnRandom : MyMonoBehaviour
         Transform ranPoint = this.junkSpawnCtrl.JunkSpawnPoint.GetRandom();
         Vector3 pos = ranPoint.position;
         Quaternion rot = transform.rotation;
-        Transform obj = this.junkSpawnCtrl.JunkSpawner.Spawn(JunkSpawner.meteoriteOne, pos, rot);
+
+        Transform prefab = this.junkSpawnCtrl.JunkSpawner.RandomPrefabs();
+        Transform obj = this.junkSpawnCtrl.JunkSpawner.Spawn(prefab, pos, rot);
         obj.gameObject.SetActive(true);
-        // Invoke(nameof(this.JunkSpawning), 1f);
 
     }
 

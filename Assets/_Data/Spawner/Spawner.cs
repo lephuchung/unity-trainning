@@ -56,9 +56,13 @@ public abstract class Spawner : MyMonoBehaviour
             Debug.LogWarning("Prefab not found: " + prefabName);
             return null;    
         }
+        return this.Spawn(prefab, spawnPos, rotation);
+    }
 
+    public virtual Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation)
+    {
         Transform newPrefab = this.GetObjectFromPool(prefab);
-        newPrefab.SetPositionAndRotation(spawnPos,rotation);
+        newPrefab.SetPositionAndRotation(spawnPos, rotation);
 
         newPrefab.parent = this.holder;
         this.spawnedCount++;
@@ -98,6 +102,12 @@ public abstract class Spawner : MyMonoBehaviour
         }
 
         return null;
+    }
+
+    public virtual Transform RandomPrefabs()
+    {
+        int rand = Random.Range(0, this.prefabs.Count);
+        return this.prefabs[rand];
     }
 
 }
