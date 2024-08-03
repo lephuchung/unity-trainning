@@ -10,8 +10,6 @@ public abstract class Despawn : MyMonoBehaviour
         this.Despawning();
     }
 
-    
-
     protected virtual void Despawning()
     {
         if (!this.CanDespawn()) return;
