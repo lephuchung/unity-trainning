@@ -37,5 +37,20 @@ public class BulletImpact : BulletAbstract
     protected virtual void OnTriggerEnter(Collider other)
     {
         this.bulletCtrl.DamageSender.Send(other.transform);
+        this.CreateImpactFX(other);
+    }
+
+    protected virtual void CreateImpactFX(Collider other)
+    {
+        string fxName = this.GetImpactFx();
+
+        Vector3 hitPosition = other.transform.position;
+        Quaternion hitRotation = transform.rotation;
+        Transform fxImpact = FXSpawner.Instance.Spawn(fxName, hitPosition, hitRotation);
+        fxImpact.gameObject.SetActive(true);
+    }
+    protected virtual string GetImpactFx()
+    {
+        return FXSpawner.impact1;
     }
 }
