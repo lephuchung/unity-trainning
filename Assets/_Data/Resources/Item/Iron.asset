@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5de11d25bfd8e9b4c9ce26b5517f0f72, type: 3}
-  m_Name: Meteorite_1
+  m_Script: {fileID: 11500000, guid: ac870ed14b0152847817eef9ac73ff3f, type: 3}
+  m_Name: Iron
   m_EditorClassIdentifier: 
-  junkName: Meteorite_1
-  hpMax: 2
-  dropList:
-  - itemSO: {fileID: 11400000, guid: 8538c9e530cefa6498f10a513ed7eb03, type: 2}
-    dropRate: 100000
-    minDrop: 1
-    maxDrop: 1
+  itemName: Iron
+  itemCode: Code
