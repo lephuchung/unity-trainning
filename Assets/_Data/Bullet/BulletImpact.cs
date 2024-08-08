@@ -36,8 +36,8 @@ public class BulletImpact : BulletAbstract
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.transform.parent.name);
-        Debug.Log(transform.parent.name);
+        // Debug.Log(other.transform.parent.name);
+        // Debug.Log(transform.parent.name);
         if (other.transform.parent == this.bulletCtrl.Shooter) return;
         this.bulletCtrl.DamageSender.Send(other.transform);
         this.CreateImpactFX(other);
