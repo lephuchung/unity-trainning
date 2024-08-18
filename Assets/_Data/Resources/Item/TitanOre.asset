@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac870ed14b0152847817eef9ac73ff3f, type: 3}
-  m_Name: Titan
+  m_Name: TitanOre
   m_EditorClassIdentifier: 
-  itemName: Titan
-  itemCode: Code
+  itemName: Titan Ore
+  itemCode: 3
