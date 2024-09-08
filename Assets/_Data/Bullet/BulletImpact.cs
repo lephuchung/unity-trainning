@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
@@ -36,24 +34,7 @@ public class BulletImpact : BulletAbstract
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        // Debug.Log(other.transform.parent.name);
-        // Debug.Log(transform.parent.name);
         if (other.transform.parent == this.bulletCtrl.Shooter) return;
         this.bulletCtrl.DamageSender.Send(other.transform);
-        this.CreateImpactFX(other);
-    }
-
-    protected virtual void CreateImpactFX(Collider other)
-    {
-        string fxName = this.GetImpactFx();
-
-        Vector3 hitPosition = other.transform.position;
-        Quaternion hitRotation = transform.rotation;
-        Transform fxImpact = FXSpawner.Instance.Spawn(fxName, hitPosition, hitRotation);
-        fxImpact.gameObject.SetActive(true);
-    }
-    protected virtual string GetImpactFx()
-    {
-        return FXSpawner.impact1;
     }
 }
