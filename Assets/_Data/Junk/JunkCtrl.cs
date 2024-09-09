@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class JunkCtrl : MyMonoBehaviour
@@ -8,10 +6,10 @@ public class JunkCtrl : MyMonoBehaviour
     public Transform Model { get => model; }
 
     [SerializeField] protected JunkDespawn junkDespawn;
-    public JunkDespawn JunkDespawn {  get => junkDespawn; }
+    public JunkDespawn JunkDespawn => junkDespawn;
 
     [SerializeField] protected JunkSO junkSO;
-    public JunkSO JunkSO { get => junkSO; }
+    public JunkSO JunkSO => junkSO;
 
     protected override void LoadComponents()
     {
@@ -30,14 +28,14 @@ public class JunkCtrl : MyMonoBehaviour
 
     protected virtual void LoadJunkDespawn()
     {
-        if(this.junkDespawn != null) return;
+        if (this.junkDespawn != null) return;
         this.junkDespawn = transform.GetComponentInChildren<JunkDespawn>();
         Debug.LogWarning(transform.name + ": LoadJunkDespawn", gameObject);
     }
 
     protected virtual void LoadJunkSO()
     {
-        if(this.junkSO != null) return;
+        if (this.junkSO != null) return;
         string resPath = "Junk/" + transform.name;
         this.junkSO = Resources.Load<JunkSO>(resPath);
         Debug.LogWarning(transform.name + ": LoadJunkSO" + resPath, gameObject);

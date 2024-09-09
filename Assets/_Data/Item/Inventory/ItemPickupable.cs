@@ -1,8 +1,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class ItemPickupable : MyMonoBehaviour
+public class ItemPickupable : JunkAbstract
 {
+    [Header("Item Pickupable")]
     [SerializeField] protected SphereCollider _collider;
 
     protected override void LoadComponents()
@@ -18,5 +19,20 @@ public class ItemPickupable : MyMonoBehaviour
         this._collider.isTrigger = true;
         this._collider.radius = 0.1f;
         Debug.LogWarning(transform.name + " LoadTrigger", gameObject);
+    }
+
+    protected static ItemCode String2ItemCode(string itemName)
+    {
+        return (ItemCode)System.Enum.Parse(typeof(ItemCode), itemName);
+    }
+
+    public virtual ItemCode GetItemCode()
+    {
+        return ItemPickupable.String2ItemCode(transform.parent.name);
+    }
+
+    public virtual void Picked()
+    {
+        this.junkCtrl.JunkDespawn.DespawnObject();
     }
 }
