@@ -6,6 +6,17 @@ public class ItemPickupable : JunkAbstract
     [Header("Item Pickupable")]
     [SerializeField] protected SphereCollider _collider;
 
+    protected static ItemCode String2ItemCode(string itemName)
+    {
+        return (ItemCode)System.Enum.Parse(typeof(ItemCode), itemName);
+    }
+
+    public virtual void OnMouseDown()
+    {
+        Debug.Log(transform.parent.name);
+        PlayerCtrl.Instance.PlayerPickup.ItemPickUp(this);
+    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -17,13 +28,8 @@ public class ItemPickupable : JunkAbstract
         if (this._collider != null) return;
         this._collider = transform.GetComponent<SphereCollider>();
         this._collider.isTrigger = true;
-        this._collider.radius = 0.1f;
+        this._collider.radius = 0.3f;
         Debug.LogWarning(transform.name + " LoadTrigger", gameObject);
-    }
-
-    protected static ItemCode String2ItemCode(string itemName)
-    {
-        return (ItemCode)System.Enum.Parse(typeof(ItemCode), itemName);
     }
 
     public virtual ItemCode GetItemCode()
