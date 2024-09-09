@@ -17,6 +17,24 @@ public class Inventory : MyMonoBehaviour
         return true;
     }
 
+    public virtual bool DeductItem(ItemCode itemCode, int minusCount)
+    {
+        ItemInventory itemInventory = this.GetItemByCode(itemCode);
+        int newCount = itemInventory.itemCount - minusCount;
+        if (newCount < 0) return false;
+
+        itemInventory.itemCount = newCount;
+        return true;
+    }
+
+    public virtual bool TryDeductItem(ItemCode itemCode, int minusCount)
+    {
+        ItemInventory itemInventory = this.GetItemByCode(itemCode);
+        int newCount = itemInventory.itemCount - minusCount;
+        if (newCount < 0) return false;
+        return true;
+    }
+
     public virtual ItemInventory GetItemByCode(ItemCode itemCode)
     {
         ItemInventory itemInventory = this.items.Find((item) => item.itemProfile.itemCode == itemCode);
