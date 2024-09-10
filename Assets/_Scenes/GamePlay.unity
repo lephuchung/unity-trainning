@@ -444,12 +444,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 229804041}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c56403e887c15ff4e8cb7340bfe48692, type: 3}
+  m_Script: {fileID: 11500000, guid: f54adf63e69c8534aaf1bc894bae1695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 1154068841}
-  junkDespawn: {fileID: 1156763672}
-  junkSO: {fileID: 0}
+  itemDespawn: {fileID: 1156763672}
 --- !u!1 &234697817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,10 +1234,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 575720594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 450562c90ba7b494a8300b13a3f76ac4, type: 3}
+  m_Script: {fileID: 11500000, guid: 04044f27dadb5424abf7f812ee6625e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disLimit: 25
+  disLimit: 70
   distance: 0
   mainCam: {fileID: 519420032}
 --- !u!1 &606321872
@@ -1612,12 +1610,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 796159151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c56403e887c15ff4e8cb7340bfe48692, type: 3}
+  m_Script: {fileID: 11500000, guid: f54adf63e69c8534aaf1bc894bae1695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 191104270}
-  junkDespawn: {fileID: 575720597}
-  junkSO: {fileID: 0}
+  itemDespawn: {fileID: 575720597}
 --- !u!1 &816963761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,10 +2003,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1156763670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 450562c90ba7b494a8300b13a3f76ac4, type: 3}
+  m_Script: {fileID: 11500000, guid: 04044f27dadb5424abf7f812ee6625e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disLimit: 25
+  disLimit: 70
   distance: 0
   mainCam: {fileID: 519420032}
 --- !u!1 &1158678974
@@ -2287,7 +2283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15da5274941e00e4e94291f7ffc29605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  junkCtrl: {fileID: 229804043}
+  itemCtrl: {fileID: 229804043}
   _collider: {fileID: 1397067102}
 --- !u!135 &1397067102
 SphereCollider:
@@ -2433,7 +2429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15da5274941e00e4e94291f7ffc29605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  junkCtrl: {fileID: 796159153}
+  itemCtrl: {fileID: 796159153}
   _collider: {fileID: 1435611481}
 --- !u!135 &1435611481
 SphereCollider:
