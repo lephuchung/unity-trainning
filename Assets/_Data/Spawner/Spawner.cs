@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,7 +31,8 @@ public abstract class Spawner : MyMonoBehaviour
         if (this.prefabs.Count > 0) { return; }
 
         Transform prefabsObj = transform.Find("Prefabs");
-        foreach (Transform prefab in prefabsObj) { 
+        foreach (Transform prefab in prefabsObj)
+        {
             this.prefabs.Add(prefab);
         }
         this.HidePrefabs();
@@ -54,7 +54,7 @@ public abstract class Spawner : MyMonoBehaviour
         if (prefab == null)
         {
             Debug.LogWarning("Prefab not found: " + prefabName);
-            return null;    
+            return null;
         }
         return this.Spawn(prefab, spawnPos, rotation);
     }
@@ -71,11 +71,11 @@ public abstract class Spawner : MyMonoBehaviour
 
     protected virtual Transform GetObjectFromPool(Transform prefab)
     {
-        foreach(Transform poolObj in this.poolObjs)
+        foreach (Transform poolObj in this.poolObjs)
         {
             if (poolObj == null) continue;
 
-            if(poolObj.name == prefab.name)
+            if (poolObj.name == prefab.name)
             {
                 this.poolObjs.Remove(poolObj);
                 return poolObj;
@@ -96,9 +96,9 @@ public abstract class Spawner : MyMonoBehaviour
 
     public virtual Transform GetPrefabByName(string prefabName)
     {
-        foreach(Transform prefab in this.prefabs)
+        foreach (Transform prefab in this.prefabs)
         {
-            if(prefab.name == prefabName) return prefab;
+            if (prefab.name == prefabName) return prefab;
         }
 
         return null;
