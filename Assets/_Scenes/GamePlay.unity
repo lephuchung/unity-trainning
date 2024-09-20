@@ -827,8 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de793bb7d929904ca4fb5bd7e7981da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSlots: 70
-  maxAddCount: 999
+  maxSlot: 2
   items: []
 --- !u!1 &374776528
 GameObject:
