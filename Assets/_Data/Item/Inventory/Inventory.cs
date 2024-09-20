@@ -3,45 +3,55 @@ using UnityEngine;
 
 public class Inventory : MyMonoBehaviour
 {
-    [SerializeField] protected int maxSlots = 70;
-    [SerializeField] protected int maxAddCount = 999;
+    [SerializeField] protected int maxSlot = 70;
     [SerializeField] protected List<ItemInventory> items;
 
     protected override void Start()
     {
         base.Start();
-        this.AddItem(ItemCode.IronOre, 12);
-        //this.AddItem(ItemCode.CopperSword, 3);
+        this.AddItem(ItemCode.IronOre, 8);
+        this.AddItem(ItemCode.CopperSword, 3);
     }
 
     public virtual bool AddItem(ItemCode itemCode, int addCount)
     {
-        if (addCount > this.maxAddCount) Debug.LogError("Can't add too many item, max: " + this.maxAddCount);
-
         ItemProfileSO itemProfile = this.GetItemProfile(itemCode);
         int addRemain = addCount;
         int newCount;
         int itemMaxStack;
+        int addMore;
         ItemInventory itemExist;
-        for (int i = 0; i < this.maxAddCount; i++)
+        for (int i = 0; i < this.maxSlot; i++)
         {
             itemExist = this.GetItemNotFullStack(itemCode);
             if (itemExist == null)
             {
-                itemExist = this.CreateDummyItem(itemProfile);
+                if (this.IsInventoryFull()) return false;
+                itemExist = this.CreateEmptyItem(itemProfile);
                 this.items.Add(itemExist);
             }
             newCount = itemExist.itemCount + addRemain;
             itemMaxStack = this.GetMaxStack(itemExist);
             if (newCount > itemMaxStack)
             {
-                newCount = itemMaxStack;
+                addMore = itemMaxStack - itemExist.itemCount;
+                newCount = itemExist.itemCount + addMore;
+                addRemain -= addMore;
+            }
+            else
+            {
+                addRemain -= newCount;
             }
             itemExist.itemCount = newCount;
-            addRemain -= newCount;
             if (addRemain < 1) break;
         }
         return true;
+    }
+
+    protected virtual bool IsInventoryFull()
+    {
+        if (this.items.Count >= this.maxSlot) return true;
+        return false;
     }
 
     protected virtual int GetMaxStack(ItemInventory itemInventory)
@@ -63,12 +73,11 @@ public class Inventory : MyMonoBehaviour
 
     protected virtual ItemInventory GetItemNotFullStack(ItemCode itemCode)
     {
-        List<ItemInventory> matchingItems = this.items.FindAll((item) => item.itemProfile.itemCode == itemCode);
-        foreach (var itemInventory in matchingItems)
+        foreach (ItemInventory itemInventory in this.items)
         {
+            if (itemCode != itemInventory.itemProfile.itemCode) continue;
             if (this.IsFullStack(itemInventory)) continue;
             return itemInventory;
-
         }
         return null;
     }
@@ -80,7 +89,7 @@ public class Inventory : MyMonoBehaviour
         return itemInventory.itemCount >= maxStack;
     }
 
-    protected virtual ItemInventory CreateDummyItem(ItemProfileSO itemProfile)
+    protected virtual ItemInventory CreateEmptyItem(ItemProfileSO itemProfile)
     {
         ItemInventory itemInventory = new ItemInventory
         {
