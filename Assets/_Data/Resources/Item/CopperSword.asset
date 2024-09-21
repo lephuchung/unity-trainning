@@ -16,3 +16,10 @@ MonoBehaviour:
   itemType: 2
   itemName: Copper Sword
   defaultMaxStack: 1
+  upgradeLevels:
+  - ingredients:
+    - itemProfile: {fileID: 11400000, guid: 4793b0ee41ad4ff45888de7e5654690d, type: 2}
+      itemCount: 6
+  - ingredients:
+    - itemProfile: {fileID: 11400000, guid: b4fafccb8d8a2e04e85293d0897b9037, type: 2}
+      itemCount: 5
