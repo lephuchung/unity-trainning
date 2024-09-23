@@ -15,6 +15,26 @@ public class Inventory : MyMonoBehaviour
         this.AddItem(ItemCode.GoldOre, 10);
     }
 
+    public virtual bool AddItem(ItemInventory itemInventory)
+    {
+        int addCount = itemInventory.itemCount;
+        ItemProfileSO itemProfile = itemInventory.itemProfile;
+        ItemCode itemCode = itemInventory.itemProfile.itemCode;
+        ItemType itemType = itemInventory.itemProfile.itemType;
+        if (itemType == ItemType.Equiment)
+        {
+            return this.AddEquipment(itemInventory);
+        }
+        return this.AddItem(itemCode, addCount);
+    }
+
+    public virtual bool AddEquipment(ItemInventory itemInventory)
+    {
+        if (this.IsInventoryFull()) { return false; }
+        this.items.Add(itemInventory);
+        return true;
+    }
+
     public virtual bool AddItem(ItemCode itemCode, int addCount)
     {
         ItemProfileSO itemProfile = this.GetItemProfile(itemCode);

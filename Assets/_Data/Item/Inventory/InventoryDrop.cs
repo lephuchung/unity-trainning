@@ -1,5 +1,5 @@
 using UnityEngine;
-public class ItemInventoryDrop : InventoryAbstract
+public class InventoryDrop : InventoryAbstract
 {
     protected override void Start()
     {
@@ -18,5 +18,6 @@ public class ItemInventoryDrop : InventoryAbstract
         Vector3 dropPos = transform.position;
         dropPos.x += 1;
         ItemDropSpawner.Instance.Drop(itemInventory, dropPos, transform.rotation);
+        this.inventory.Items.Remove(itemInventory);
     }
 }
