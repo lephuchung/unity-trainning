@@ -19,18 +19,15 @@ public class Inventory : MyMonoBehaviour
     {
         int addCount = itemInventory.itemCount;
         ItemProfileSO itemProfile = itemInventory.itemProfile;
-        ItemCode itemCode = itemInventory.itemProfile.itemCode;
-        ItemType itemType = itemInventory.itemProfile.itemType;
-        if (itemType == ItemType.Equiment)
-        {
-            return this.AddEquipment(itemInventory);
-        }
+        ItemCode itemCode = itemProfile.itemCode;
+        ItemType itemType = itemProfile.itemType;
+        if (itemType == ItemType.Equiment) return this.AddEquipment(itemInventory);
         return this.AddItem(itemCode, addCount);
     }
 
     public virtual bool AddEquipment(ItemInventory itemInventory)
     {
-        if (this.IsInventoryFull()) { return false; }
+        if (this.IsInventoryFull()) return false;
         this.items.Add(itemInventory);
         return true;
     }

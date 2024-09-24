@@ -10,7 +10,7 @@ public enum ItemCode
     CopperSword = 4,
 }
 
-public class ItemCodeParse
+public class ItemCodeParser
 {
     public static ItemCode FromString(string itemName)
     {
