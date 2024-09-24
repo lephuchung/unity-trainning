@@ -29,9 +29,9 @@ public class ItemCtrl : MyMonoBehaviour
 
     protected virtual void LoadItemInventory()
     {
-        if (this.itemInventory != null) return;
-        ItemCode itemCode = ItemCodeParse.FromString(transform.name);
-        ItemProfileSO itemProfile = ItemProfileSO.FindByCode(itemCode);
+        if (this.itemInventory.itemProfile != null) return;
+        ItemCode itemCode = ItemCodeParser.FromString(transform.name);
+        ItemProfileSO itemProfile = ItemProfileSO.FindByItemCode(itemCode);
         this.itemInventory.itemProfile = itemProfile;
         this.itemInventory.itemCount = 1;
         Debug.Log(transform.name + ": LoadItemInventory", gameObject);
